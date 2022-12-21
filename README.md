@@ -1,5 +1,8 @@
 # DYST: Did You See That? A Covert Channel Exploiting Recent Legitimate Traffic
 
+This repository contains the proof-of-concept implementation of the **DYST** covert channel, accompanying the paper
+
+- Steffen Wendzel, Tobias Schmidbauer, Sebastian Zillien, Jörg Keller: *[Did You See That? A Covert Channel Exploiting Recent Legitimate Traffic](todo)*, pre-print.
 
 ## Live Mode
 
