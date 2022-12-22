@@ -1,4 +1,4 @@
-# DYST: Did You See That? A Covert Channel Exploiting Recent Legitimate Traffic
+# DYST (*Did You See That?*) – A Covert Channel Exploiting Recent Legitimate Traffic
 
 This repository contains the proof-of-concept implementation of the **DYST** covert channel, accompanying the paper
 
