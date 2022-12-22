@@ -91,4 +91,4 @@ python offlineMode.py <Message Input File> <Bytes per Pkt> <Pcap Input> <Mode> <
 
 
 ## Log Folder
-The log folder contains some extracted example IPDs in the CSV format.
+The log folder contains some extracted example inter-packet delays (IPDs) in the CSV format.
