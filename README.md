@@ -2,7 +2,7 @@
 
 This repository contains the proof-of-concept implementation of the **DYST** covert channel introduced in the following article:
 
-| Steffen Wendzel, Tobias Schmidbauer, Sebastian Zillien, Jörg Keller: **[Did You See That? A Covert Channel Exploiting Recent Legitimate Traffic](http://www.wendzel.de/dr.org/files/Papers/DYSTv1_History_CCs.pdf)**, pre-print, December 2022. |
+| Steffen Wendzel, Tobias Schmidbauer, Sebastian Zillien, Jörg Keller: **[Did You See That? A Covert Channel Exploiting Recent Legitimate Traffic](https://arxiv.org/abs/2212.11850)**, pre-print, arXiv:2212.11850, December 2022. |
 |----|
 
 
