@@ -46,7 +46,7 @@ class OfflineMode:
         elif self.bad_pkt is not None and float(packet.time - self.bad_pkt.time) < consts.delay:
             self.bad_pkt = packet
             return False
-        elif self.bad_pkt is not None and float(packet.time - self.bad_pkt.time) > consts.delay:
+        elif self.bad_pkt is not None and float(packet.time - self.bad_pkt.time) >= consts.delay:
             self.old_pkt = packet
             self.bad_pkt = None
             return False
