@@ -35,6 +35,8 @@ class OfflineMode:
 
         self.mode = mode
 
+        self.done = False
+
     def check_and_update_pkt_delays(self, packet):
         if self.old_pkt is None and self.bad_pkt is None:
             self.old_pkt = packet
@@ -55,6 +57,9 @@ class OfflineMode:
 
     def __call__(self, packet):
         self.counter_total += 1
+
+        if self.done:
+            return
 
         if not is_pkt_of_interest(packet):
             return
@@ -79,19 +84,24 @@ class OfflineMode:
                 if match_percentage == 1.0:
                     if self.last_hit != 0:
                         self.res.append(
-                            "{},{},{},{},{},{}\n".format(True, self.counter_interest, self.counter_total, match_percentage, self.old_pkt.time,
+                            "{},{},{},{},{},{}\n".format(True, self.counter_interest, self.counter_total, match_percentage,
+                                                         self.old_pkt.time,
                                                          (self.old_pkt.time - self.last_hit)))
                     else:
                         self.res.append(
-                            "{},{},{},{},{},{}\n".format(True, self.counter_interest, self.counter_total, match_percentage, self.old_pkt.time,
+                            "{},{},{},{},{},{}\n".format(True, self.counter_interest, self.counter_total, match_percentage,
+                                                         self.old_pkt.time,
                                                          -1))
                     self.cm_array_current += 1
+                    if self.cm_array_current >= len(self.cm_array)-1:
+                        self.done = True
                     self.ba_curr = get_string_to_binary(self.cm_array[self.cm_array_current])
                     self.last_hit = self.old_pkt.time
                     self.sent_pkt = self.old_pkt
                 else:
                     self.res.append(
-                        "{},{},{},{},{},{}\n".format(False, self.counter_interest, self.counter_total, match_percentage, self.old_pkt.time, -1))
+                        "{},{},{},{},{},{}\n".format(False, self.counter_interest, self.counter_total, match_percentage,
+                                                     self.old_pkt.time, -1))
             elif self.mode == "ext":
                 match_count = get_match_count(pkt_hash, list(curr_target))
 
@@ -108,6 +118,8 @@ class OfflineMode:
                                                              self.old_pkt.time,
                                                              -1))
                         self.cm_array_current += 1
+                        if self.cm_array_current >= len(self.cm_array) - 1:
+                            self.done = True
                         self.ba_curr = get_string_to_binary(self.cm_array[self.cm_array_current])
                         self.last_hit = self.old_pkt.time
                         self.sent_pkt = self.old_pkt
