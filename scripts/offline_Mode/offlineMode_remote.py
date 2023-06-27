@@ -40,7 +40,7 @@ if __name__ == "__main__":
     offline_mode_worker = OfflineMode(arg_mode, arg_ba_curr, arg_cm_array, arg_masks, arg_target_count, arg_number_of_chars, robust)
 
     print("========Starting Offline Mode=========")
-    sniff(offline=inputFile, prn=offline_mode_worker)
+    sniff(offline=inputFile, prn=offline_mode_worker, store=False)
 
     print("Opening Output File ", output)
     with open(output, 'w') as f:
