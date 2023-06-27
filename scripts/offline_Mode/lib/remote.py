@@ -11,6 +11,8 @@ def is_pkt_of_interest(packet):
     if IPv6 in packet:
         if IPAddress(packet[IPv6].dst).is_private():
             return False
+        elif IPAddress(packet[IPv6].dst).is_multicast():
+            return False
         elif str(packet[Ether].dst) == consts.hwv6_broadcast:
             return False
         elif str(packet[IPv6].dst).startswith(consts.ipv6_broadcast):
@@ -18,6 +20,8 @@ def is_pkt_of_interest(packet):
         return True
     elif IP in packet:
         if IPAddress(packet[IP].dst).is_private():
+            return False
+        elif IPAddress(packet[IP].dst).is_multicast():
             return False
         elif str(packet[Ether].dst) == consts.hwv4_broadcast:
             return False
