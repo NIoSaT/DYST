@@ -16,6 +16,7 @@ if __name__ == "__main__":
     parser.add_argument('-tc', '--target-count', default=0, dest="tc", type=int)
     parser.add_argument('-r', '--robust', action='store_true')
     parser.add_argument('-m', '--mode')
+    parser.add_argument('-bc', '--broad-cast', dest="bc")
 
     args = parser.parse_args()
 
@@ -27,6 +28,7 @@ if __name__ == "__main__":
     output = args.output
     arg_target_count = args.tc
     robust = args.robust
+    ipv4_broadcast = args.bc
 
     print("========Reading Covert Message=========")
     covert_message = open(covert_message_file, 'r').read()
@@ -37,7 +39,8 @@ if __name__ == "__main__":
     arg_masks = get_mask(len(list(arg_ba_curr + get_check_sum(list(arg_ba_curr), arg_number_of_chars))),
                      len(list(arg_ba_curr + get_check_sum(list(arg_ba_curr), arg_number_of_chars))) - arg_target_count)
 
-    offline_mode_worker = OfflineMode(arg_mode, arg_ba_curr, arg_cm_array, arg_masks, arg_target_count, arg_number_of_chars, robust)
+    offline_mode_worker = OfflineMode(arg_mode, arg_ba_curr, arg_cm_array, arg_masks, arg_target_count,
+                                      arg_number_of_chars, robust, ipv4_broadcast)
 
     print("========Starting Offline Mode=========")
     sniff(offline=inputFile, prn=offline_mode_worker, store=False)

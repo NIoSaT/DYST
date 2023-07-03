@@ -9,12 +9,14 @@ from lib.local import is_pkt_of_interest
 
 
 class OfflineMode:
-    def __init__(self, mode, ba_curr, cm_array, masks, target_count, number_of_chars, robust):
+    def __init__(self, mode, ba_curr, cm_array, masks, target_count, number_of_chars, robust, ipv4_broadcast):
 
         self.robust = robust
 
         self.counter_interest = 0
         self.counter_total = 0
+
+        self.ipv4_broadcast = ipv4_broadcast
 
         self.old_pkt = None
         self.bad_pkt = None
@@ -61,7 +63,7 @@ class OfflineMode:
         if self.done:
             return
 
-        if not is_pkt_of_interest(packet):
+        if not is_pkt_of_interest(packet,self.ipv4_broadcast):
             return
         if not self.robust or self.check_and_update_pkt_delays(packet):
             if not self.robust:
