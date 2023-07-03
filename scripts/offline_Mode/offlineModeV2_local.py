@@ -4,7 +4,7 @@ import argparse
 from scapy.sendrecv import sniff
 
 from lib.offline_lib import get_mask, get_string_to_binary, get_check_sum
-from lib.offline_mode import OfflineMode
+from lib.offline_mode_local import OfflineMode
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(

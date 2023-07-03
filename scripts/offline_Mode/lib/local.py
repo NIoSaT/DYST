@@ -1,7 +1,7 @@
 from netaddr import *
 from scapy.all import *
 
-def isPktOfInterest(packet):
+def is_pkt_of_interest(packet):
     global hwv4_broadcast  ## MAC address for broadcasts
     global ipv4_broadcast  ## IP address for broadcasts
     global hwv6_broadcast  ## MAC address for broadcasts
