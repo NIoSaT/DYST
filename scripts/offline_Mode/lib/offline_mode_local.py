@@ -63,7 +63,7 @@ class OfflineMode:
         if self.done:
             return
 
-        if not is_pkt_of_interest(packet,self.ipv4_broadcast):
+        if not is_pkt_of_interest(packet, self.ipv4_broadcast):
             return
         if not self.robust or self.check_and_update_pkt_delays(packet):
             if not self.robust:
@@ -108,7 +108,7 @@ class OfflineMode:
                 match_count = get_match_count(pkt_hash, list(curr_target))
 
                 if match_count >= self.target_count:
-                    if check_bit_flips(pkt_hash, self.ba_curr, self.number_of_chars, self.masks):
+                    if check_bit_flips(pkt_hash, curr_target, self.number_of_chars, self.masks):
                         if self.last_hit != 0:
                             self.res.append(
                                 "{},{},{},{},{},{}\n".format(True, self.counter_interest, self.counter_total, match_count,

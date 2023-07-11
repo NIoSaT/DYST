@@ -98,7 +98,7 @@ def check_bit_flips(input_hash, orig, number_of_chars, masks):
     for i in masks:
         cur_flipped = list(map(lambda x, y: x ^ int(y), input_hash, list(i)))
         if test_check_sum(cur_flipped, number_of_chars):
-            if cur_flipped[:cflen] == orig:
+            if cur_flipped[:cflen] == orig[:cflen]:
                 return True
             else:
                 return False
