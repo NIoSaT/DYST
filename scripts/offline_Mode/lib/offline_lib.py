@@ -86,6 +86,22 @@ def test_check_sum(input_hash, number_of_chars):
         exit(100)
 
 
+def do_bit_flips(input_hash, number_of_chars, masks):
+    if number_of_chars == 1:
+        cflen = -4
+    elif number_of_chars == 2:
+        cflen = -5
+    else:
+        print("Checksum Length to long")
+        exit(100)
+
+    for i in masks:
+        cur_flipped = list(map(lambda x, y: x ^ int(y), input_hash, list(i)))
+        if test_check_sum(cur_flipped, number_of_chars):
+            return cur_flipped
+    return "_"
+
+
 def check_bit_flips(input_hash, orig, number_of_chars, masks):
     if number_of_chars == 1:
         cflen = -4
