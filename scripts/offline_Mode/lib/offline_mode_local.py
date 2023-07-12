@@ -4,7 +4,7 @@ from bitstring import BitArray
 
 import lib.constants as consts
 from lib.offline_lib import get_hash_value, get_input_values, get_match_percent, \
-    get_string_to_binary, get_match_count, check_bit_flips
+    get_string_to_binary, get_match_count, check_bit_flips, get_check_sum
 from lib.local import is_pkt_of_interest
 
 
@@ -69,7 +69,11 @@ class OfflineMode:
             if not self.robust:
                 self.old_pkt = packet
 
-            curr_target = list(map(int, self.ba_curr))
+            if self.mode == "basic":
+                curr_target = list(map(int, self.ba_curr))
+            elif self.mode == "ext":
+                curr_target = list(map(int, self.ba_curr+get_check_sum(list(self.ba_curr),self.number_of_chars)))
+
             self.counter_interest += 1
             critical_fraction, seconds = math.modf(self.old_pkt.time)
             if critical_fraction > consts.crit_fraction_high or critical_fraction < consts.crit_fraction_low:
