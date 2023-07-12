@@ -4,3 +4,4 @@ netaddr
 netifaces
 numpy
 scapy
+pandas
