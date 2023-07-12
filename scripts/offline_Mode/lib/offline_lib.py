@@ -5,11 +5,16 @@ import itertools
 
 from scapy.layers.inet import IP
 from scapy.layers.inet6 import IPv6
-from scapy.layers.l2 import ARP
+from scapy.layers.l2 import ARP, Ether
+
 
 def get_string_to_binary(input_string):
     bin_value = BitArray(input_string.encode('utf-8')).bin
     return bin_value
+
+
+def get_bit_string_to_string(bits):
+    return ''.join(chr(int(bits[i*8:i*8+8], 2)) for i in range(len(bits)//8))
 
 
 def get_string_to_binary_bch(input_string, bch):
