@@ -33,7 +33,9 @@ input_pcap = rdpcap(args.pcap)
 input_log = pd.read_csv(args.logfile)
 
 if args.ext:
-    computed_masks = get_mask(8*args.noc + 3+args.noc, 8*args.noc + 3+args.noc - args.tc)
+    #computed_masks = get_mask(8*args.noc + 3+args.noc, 8*args.noc + 3+args.noc - args.tc)
+    computed_masks = [[int(x) for x in list(format(i, f"0{8*args.noc + 3+args.noc}b"))] for i in range(0, 2 ** (8*args.noc + 3+args.noc))]
+
 matches = input_log[input_log["match"]]
 
 decoded_msg = ""

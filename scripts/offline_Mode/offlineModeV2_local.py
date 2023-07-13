@@ -36,8 +36,10 @@ if __name__ == "__main__":
     arg_cm_array = [covert_message[i:i + arg_number_of_chars] for i in range(0, len(covert_message), arg_number_of_chars)]
     arg_ba_curr = get_string_to_binary(arg_cm_array[0])
 
-    arg_masks = get_mask(len(list(arg_ba_curr + get_check_sum(list(arg_ba_curr), arg_number_of_chars))),
-                     len(list(arg_ba_curr + get_check_sum(list(arg_ba_curr), arg_number_of_chars))) - arg_target_count)
+    #arg_masks = get_mask(len(list(arg_ba_curr + get_check_sum(list(arg_ba_curr), arg_number_of_chars))),
+    #                 len(list(arg_ba_curr + get_check_sum(list(arg_ba_curr), arg_number_of_chars))) - arg_target_count)
+
+    arg_masks = [[int(x) for x in list(format(i, f"0{8*args.noc + 3+args.noc}b"))] for i in range(0, 2 ** (8*args.noc + 3+args.noc))]
 
     offline_mode_worker = OfflineMode(arg_mode, arg_ba_curr, arg_cm_array, arg_masks, arg_target_count,
                                       arg_number_of_chars, robust, ipv4_broadcast)
