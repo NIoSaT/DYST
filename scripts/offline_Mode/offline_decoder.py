@@ -47,3 +47,8 @@ for match_counter in matches["counter_total"]:
 
 print('Decoded Message: ')
 print(decoded_msg)
+
+with open(args.logfile+".decoded", "w") as f:
+    f.write(decoded_msg)
+
+
