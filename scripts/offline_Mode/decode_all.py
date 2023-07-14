@@ -20,14 +20,14 @@ for file_path in glob.glob("*.out"):
         recording_path = "home_legit.pcap"
 
     if re_matches.groups()[2] == "ext":
-        arguments = ["tsp", "python", "offline_decoder.py",
+        arguments = ["tsp", "python", "offline_decoder_v2.py",
                      "-l", file_path,
                      "-p", recording_path,
                      "-nc", re_matches.groups()[3],
                      "-tc", "0",
                      "-e"]
     else:
-        arguments = ["tsp", "python", "offline_decoder.py",
+        arguments = ["tsp", "python", "offline_decoder_v2.py",
                      "-l", file_path,
                      "-p", recording_path,
                      "-nc", re_matches.groups()[3],
