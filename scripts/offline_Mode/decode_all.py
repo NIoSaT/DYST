@@ -20,21 +20,17 @@ for file_path in glob.glob("*.out"):
         recording_path = "home_legit.pcap"
 
     if re_matches.groups()[2] == "ext":
-        arguments = ["python", "offline_decoder.py",
+        arguments = ["tsp", "python", "offline_decoder.py",
                      "-l", file_path,
                      "-p", recording_path,
                      "-nc", re_matches.groups()[3],
                      "-tc", "0",
                      "-e"]
     else:
-        arguments = ["python", "offline_decoder.py",
+        arguments = ["tsp", "python", "offline_decoder.py",
                      "-l", file_path,
                      "-p", recording_path,
                      "-nc", re_matches.groups()[3],
                      "-tc", "0"]
 
     subprocess.run(arguments)
-
-    #decoded_file_content = open(file_path+".decoded", "r").read()
-    #if "short1" in file_path:
-    #print(decoded_file_content)
