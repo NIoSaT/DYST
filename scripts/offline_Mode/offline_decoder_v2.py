@@ -26,6 +26,7 @@ parser.add_argument("-l", "--logfile", required=True)
 parser.add_argument("-e", "--ext", action="store_true")
 parser.add_argument('-nc', '--number-of-chars', dest="noc", type=int, required=True)
 parser.add_argument('-tc', '--target-count', dest="tc", type=int, required=True)
+parser.add_argument("-r", "--robust", action="store_true")
 
 args = parser.parse_args()
 
@@ -38,7 +39,10 @@ if args.ext:
 matches = input_log[input_log["match"]]
 matches = matches["counter_total"]
 
-matches = matches-1
+if args.robust:
+    matches = matches-2
+else:
+    matches = matches-1
 
 decoded_msg = ""
 for id, pkt in enumerate(input_pcap):
