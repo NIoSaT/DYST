@@ -37,12 +37,14 @@ if args.ext:
     computed_masks = [[int(x) for x in list(format(i, f"0{8*args.noc + 3+args.noc}b"))] for i in range(0, 2 ** (8*args.noc + 3+args.noc))]
 
 matches = input_log[input_log["match"]]
-matches = matches["counter_total"]
 
-if args.robust:
-    matches = matches-2
-else:
-    matches = matches-1
+if len(matches) == 0:
+    with open(args.logfile + ".decoded", "w") as f:
+        f.write('')
+        exit(0)
+
+matches = matches["signal_number"]
+matches = matches-1
 
 decoded_msg = ""
 for id, pkt in enumerate(input_pcap):
@@ -57,5 +59,3 @@ print(decoded_msg)
 
 with open(args.logfile+".decoded", "w") as f:
     f.write(decoded_msg)
-
-
