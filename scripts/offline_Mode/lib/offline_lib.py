@@ -3,10 +3,64 @@ import numpy as np
 import hashlib
 import itertools
 
+from netaddr import IPAddress
 from scapy.layers.inet import IP
 from scapy.layers.inet6 import IPv6
 from scapy.layers.l2 import ARP, Ether
 
+import lib.constants as consts
+
+
+def remote_is_pkt_of_interest(packet, *args, **kwargs):
+
+    if IPv6 in packet:
+        if IPAddress(packet[IPv6].dst).is_private():
+            return False
+        elif IPAddress(packet[IPv6].dst).is_multicast():
+            return False
+        elif str(packet[Ether].dst) == consts.hwv6_broadcast:
+            return False
+        elif str(packet[IPv6].dst).startswith(consts.ipv6_broadcast):
+            return False
+        return True
+    elif IP in packet:
+        if IPAddress(packet[IP].dst).is_private():
+            return False
+        elif IPAddress(packet[IP].dst).is_multicast():
+            return False
+        elif str(packet[Ether].dst) == consts.hwv4_broadcast:
+            return False
+        elif str(packet[IP].dst) == "255.255.255.255":
+            return False
+        return True
+    else:
+        return False
+
+
+def local_is_pkt_of_interest(packet, ipv4_broadcast):
+
+    try:
+        if IPv6 in packet:
+            if str(packet[Ether].dst).startswith(consts.hwv6_broadcast):
+                return True
+            elif str(packet[IPv6].dst).startswith(consts.ipv6_broadcast):
+                return True
+            else:
+                return False
+        if IP in packet:
+            if str(packet[Ether].dst) == consts.hwv4_broadcast:
+                return True
+            elif str(packet[IP].dst) == "255.255.255.255":
+                return True
+            elif str(packet[IP].dst) == ipv4_broadcast:
+                return True
+        if ARP in packet:
+            if str(packet[Ether].dst) == consts.hwv4_broadcast:
+                return True
+        else:
+            return False
+    except:
+        return False
 
 def get_string_to_binary(input_string):
     bin_value = BitArray(input_string.encode('utf-8')).bin
@@ -128,7 +182,7 @@ def check_bit_flips(input_hash, orig, number_of_chars, masks):
     return False
 
 
-def get_input_values(input_packet):
+def get_input_values(input_packet: Ether):
     temp_string = ""
     timestamp = str(input_packet.time)
     if IPv6 in input_packet:
