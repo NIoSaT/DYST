@@ -16,7 +16,7 @@ if __name__ == "__main__":
     parser.add_argument('-tc', '--target-count', default=0, dest="tc", type=int)
     parser.add_argument('-r', '--robust', action='store_true')
     parser.add_argument('-m', '--mode')
-    parser.add_argument('-bc', '--broad-cast', dest="bc")
+    parser.add_argument('-bc', '--broad-cast', dest="bc", default="255.255.255.255")
     parser.add_argument('-s', '--scenario', choices=["local", "remote"])
 
     args = parser.parse_args()
