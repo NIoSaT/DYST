@@ -1,0 +1,13 @@
+Smarthome Remote
+Remote PoI: 4 883 153
+16 Days
+384 Hours           -> 12716 PoI per Hour
+
+Home Local
+Local PoI:  88 748
+12 Hours 31 Minutes -> 7395 PoI per Hour
+
+Office Local
+Local PoI:  766 172
+15 Days 19 Stunden
+369 Hours           -> 2076 PoI per Hour
