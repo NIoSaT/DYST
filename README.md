@@ -2,7 +2,7 @@
 
 This repository contains the proof-of-concept implementation of the **DYST** covert channel introduced in the following article:
 
-| Steffen Wendzel, Tobias Schmidbauer, Sebastian Zillien, Jörg Keller: **[DYST (Did You See That?): An Amplified Covert Channel That Points To Previously Seen Data](https://arxiv.org/abs/2212.11850)**, pre-print, arXiv:2212.11850, December 2022. |
+| Steffen Wendzel, Tobias Schmidbauer, Sebastian Zillien, Jörg Keller: **[DYST (Did You See That?): An Amplified Covert Channel That Points To Previously Seen Data](https://arxiv.org/abs/2212.11850)**, to appear in *IEEE Transactions on Dependable and Secure Computing (TDSC), pre-print: arXiv:2212.11850, December 2022. |
 |----|
 
 
