@@ -5,6 +5,7 @@ This repository contains the proof-of-concept implementation of the **DYST** cov
 | Steffen Wendzel, Tobias Schmidbauer, Sebastian Zillien, Jörg Keller: **[DYST (Did You See That?): An Amplified Covert Channel That Points To Previously Seen Data](https://doi.org/10.1109/TDSC.2024.3410679)**, in: *IEEE Transactions on Dependable and Secure Computing (TDSC)*, Vol. 22(1), 2025.
 |----|
 
+Note: There is a [list of network covert channel tools](https://github.com/cdpxe/NetworkCovertChannels).
 
 ## Live Mode
 
