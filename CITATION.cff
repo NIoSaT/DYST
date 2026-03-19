@@ -32,6 +32,11 @@ preferred-citation:
   - family-names: "Keller"
     given-names: "Jörg"
     orcid: "https://orcid.org/0000-0003-0303-6140"
-  journal: "Journal Title"
-  title: "Did You See That?: A Covert Channel Exploiting Recent Legitimate Traffic"
-  year: 2022
+  journal: "IEEE Transactions on Dependable and Secure Computing"
+  title: "DYST (Did You See That?): An Amplified Covert Channel That Points To Previously Seen Data"
+  year: 2025
+  volume: 22
+  issue: 1
+  doi: "10.1109/TDSC.2024.3410679"
+  url: "https://doi.ieeecomputersociety.org/10.1109/TDSC.2024.3410679"
+  publisher: "IEEE Computer Society"
